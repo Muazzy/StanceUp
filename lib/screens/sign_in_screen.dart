@@ -26,29 +26,6 @@ class _SignInScreenState extends State<SignInScreen> {
       resizeToAvoidBottomInset: true, //to make the textFormFields in view
       backgroundColor: Colors.white,
       appBar: AppBar(
-        // title: Column(
-        //   crossAxisAlignment: CrossAxisAlignment.center,
-        //   children: const [
-        //     SizedBox(height: 10),
-        //     Text(
-        //       'Hey there,',
-        //       style: TextStyle(
-        //         color: AppColors.primaryColor,
-        //         fontSize: 16,
-        //         fontWeight: FontWeight.w400,
-        //       ),
-        //     ),
-        //     SizedBox(height: 10),
-        //     Text(
-        //       'Sign In',
-        //       style: TextStyle(
-        //         color: AppColors.primaryColor,
-        //         fontSize: 20,
-        //         fontWeight: FontWeight.w500,
-        //       ),
-        //     ),
-        //   ],
-        // ),
         centerTitle: true,
         backgroundColor: Colors.transparent,
         elevation: 0,

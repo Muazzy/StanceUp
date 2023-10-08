@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:camera/camera.dart';
+import 'package:fyp/widgets/custom_appbar.dart';
 import 'package:tflite/tflite.dart';
 import 'dart:math';
 
@@ -49,10 +50,11 @@ class _PushedPageAState extends State<PushedPageA> {
   Widget build(BuildContext context) {
     Size screen = MediaQuery.of(context).size;
     return Scaffold(
-      appBar: AppBar(
-        title: Text('StanceUp Arm Press'),
-        backgroundColor: Colors.transparent,
-        elevation: 0,
+      appBar: customAppBar(
+        context,
+        title: 'Arm Press Detection',
+        query: 'How to do arm press',
+        videoScreenTitle: 'Arm press Suggested Videos',
       ),
       body: Stack(
         children: <Widget>[

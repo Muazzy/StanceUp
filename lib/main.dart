@@ -5,6 +5,7 @@ import 'dart:async';
 import 'package:camera/camera.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:fyp/firebase_options.dart';
+import 'package:fyp/provider/video_provider.dart';
 import 'package:fyp/screens/sign_in_screen.dart';
 import 'package:fyp/screens/sign_up_screen.dart';
 import 'package:fyp/services/auth_repository.dart';
@@ -40,6 +41,9 @@ class MyApp extends StatelessWidget {
       providers: [
         ChangeNotifierProvider(
           create: (context) => AuthRepository(FirebaseAuth.instance),
+        ),
+        ChangeNotifierProvider(
+          create: (context) => VideoProvider(),
         ),
         StreamProvider(
           create: (context) => context.read<AuthRepository>().authState,

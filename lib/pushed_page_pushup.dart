@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:camera/camera.dart';
-import 'package:flutter/services.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:fyp/services/render_data_pushup.dart';
-import 'package:fyp/utils/app_colors.dart';
+import 'package:fyp/widgets/custom_appbar.dart';
 import 'package:tflite/tflite.dart';
 import 'dart:math';
 
@@ -51,43 +49,12 @@ class _PushedPagePushupState extends State<PushedPagePushup> {
   Widget build(BuildContext context) {
     Size screen = MediaQuery.of(context).size;
     return Scaffold(
-      appBar: AppBar(
-        systemOverlayStyle: const SystemUiOverlayStyle(
-          statusBarColor: Colors.white,
-          statusBarIconBrightness: Brightness.dark,
-          statusBarBrightness: Brightness.dark,
-        ),
-        centerTitle: false,
-        title: Text(
-          'StanceUp Pushup Detection',
-          style: const TextStyle(color: Colors.black, fontSize: 16),
-        ),
-        backgroundColor: Colors.white.withOpacity(0.5),
-        actions: [
-          TextButton(
-            style: TextButton.styleFrom(
-              foregroundColor: AppColors.secondaryColor,
-            ),
-            onPressed: () {},
-            child: Text(
-              'suggested videos',
-            ),
-          ),
-          IconButton(
-            color: AppColors.secondaryColor,
-            onPressed: () {},
-            icon: SvgPicture.asset('assets/images/logo.svg'),
-          ),
-        ],
-        leading: IconButton(
-          constraints: BoxConstraints(),
-          onPressed: () => Navigator.pop(context),
-          icon: Icon(
-            Icons.arrow_back,
-            color: Colors.black,
-          ),
-        ),
-        elevation: 0,
+      appBar: customAppBar(
+        context,
+        // onVideoButtonClick: () {},
+        title: 'Pushup Detection',
+        query: 'How to do pushups',
+        videoScreenTitle: 'Pushup Suggested Videos',
       ),
       body: SafeArea(
         child: Stack(

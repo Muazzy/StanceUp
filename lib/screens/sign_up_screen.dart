@@ -25,14 +25,6 @@ class SignUpScreen extends StatelessWidget {
       resizeToAvoidBottomInset: true, //to make the textFormFields in view
       backgroundColor: Colors.white,
       appBar: AppBar(
-        // title: const Text(
-        //   'Sign Up',
-        //   style: TextStyle(
-        //     color: AppColors.primaryColor,
-        //     fontSize: 20,
-        //     fontWeight: FontWeight.w500,
-        //   ),
-        // ),
         centerTitle: true,
         backgroundColor: Colors.transparent,
         elevation: 0,

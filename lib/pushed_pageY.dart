@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:camera/camera.dart';
+import 'package:fyp/widgets/custom_appbar.dart';
 import 'package:tflite/tflite.dart';
 import 'dart:math';
 
@@ -47,10 +48,11 @@ class _PushedPageYState extends State<PushedPageY> {
   Widget build(BuildContext context) {
     Size screen = MediaQuery.of(context).size;
     return Scaffold(
-      appBar: AppBar(
-        title: Text('StanceUp Warrior Pose'),
-        backgroundColor: Colors.transparent,
-        elevation: 0,
+      appBar: customAppBar(
+        context,
+        title: 'Warrior Pose Detection',
+        query: 'How to do yoga warrior pose',
+        videoScreenTitle: 'Warrior Pose Suggested Videos',
       ),
       body: Stack(
         children: <Widget>[
