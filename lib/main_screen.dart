@@ -1,7 +1,9 @@
+import 'package:fyp/constants/yoga_poses.dart';
 import 'package:fyp/main.dart';
 import 'package:flutter/material.dart';
 import 'package:camera/camera.dart';
 import 'package:fyp/pushed_page_pushup.dart';
+import 'package:fyp/screens/yoga_screens/inference_page.dart';
 import 'package:fyp/utils/app_colors.dart';
 import 'package:fyp/widgets/search_bar.dart';
 
@@ -136,7 +138,14 @@ class MainScreen extends StatelessWidget {
                           assetImagePath: 'assets/images/warrior_pose.png',
                           onTap: () =>
                               onSelectY(context: context, modelName: 'posenet'),
-                        )
+                        ),
+                        HorizontalAlignmentCard(
+                          title: beginnerYogaPoses[0],
+                          assetImagePath:
+                              "assets/images/poses/${beginnerYogaPoses[0]}.png",
+                          onTap: () =>
+                              onSelectYoga(context, beginnerYogaPoses[0]),
+                        ),
                       ],
                     ),
                   ),
@@ -295,6 +304,22 @@ void onSelectPushup(
       builder: (context) => PushedPagePushup(
         cameras: cameras,
         title: modelName,
+      ),
+    ),
+  );
+}
+
+// for yoga
+void onSelectYoga(BuildContext context, String customModelName) async {
+  Navigator.push(
+    context,
+    MaterialPageRoute(
+      builder: (context) => InferencePage(
+        cameras: cameras,
+        title: customModelName,
+        // model: "assets/models/posenet_mv1_075_float_from_checkpoints.tflite",
+        model: "assets/posenet_mv1_075_float_from_checkpoints.tflite",
+        customModel: customModelName,
       ),
     ),
   );
