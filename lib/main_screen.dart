@@ -132,21 +132,55 @@ class MainScreen extends StatelessWidget {
                         horizontal: 16,
                       ),
                       scrollDirection: Axis.horizontal,
-                      children: [
-                        HorizontalAlignmentCard(
-                          title: 'Warrior Pose',
-                          assetImagePath: 'assets/images/warrior_pose.png',
-                          onTap: () =>
-                              onSelectY(context: context, modelName: 'posenet'),
-                        ),
-                        HorizontalAlignmentCard(
-                          title: beginnerYogaPoses[0],
-                          assetImagePath:
-                              "assets/images/poses/${beginnerYogaPoses[0]}.png",
-                          onTap: () =>
-                              onSelectYoga(context, beginnerYogaPoses[0]),
-                        ),
-                      ],
+                      // children: [
+                      //   HorizontalAlignmentCard(
+                      //     title: 'Warrior Pose',
+                      //     assetImagePath: 'assets/images/warrior_pose.png',
+                      //     onTap: () =>
+                      //         onSelectY(context: context, modelName: 'posenet'),
+                      //   ),
+                      //   HorizontalAlignmentCard(
+                      //     title: beginnerYogaPoses[0],
+                      //     assetImagePath:
+                      //         "assets/images/poses/${beginnerYogaPoses[0]}.png",
+                      //     onTap: () =>
+                      //         onSelectYoga(context, beginnerYogaPoses[0]),
+                      //   ),
+                      // ],
+                      children: List.generate(
+                            beginnerYogaPoses.length,
+                            (index) => HorizontalAlignmentCard(
+                              title: beginnerYogaPoses[index],
+                              assetImagePath:
+                                  "assets/images/poses/${beginnerYogaPoses[index]}.png",
+                              onTap: () => onSelectYoga(
+                                  context, beginnerYogaPoses[index]),
+                            ),
+                          ) +
+                          List.generate(
+                            intermediateYogaPoses.length,
+                            (index) => HorizontalAlignmentCard(
+                              title: intermediateYogaPoses[index],
+                              assetImagePath:
+                                  "assets/images/poses/${intermediateYogaPoses[index]}.png",
+                              onTap: () => onSelectYoga(
+                                context,
+                                intermediateYogaPoses[index],
+                              ),
+                            ),
+                          ) +
+                          List.generate(
+                            advanceYogaPoses.length,
+                            (index) => HorizontalAlignmentCard(
+                              title: advanceYogaPoses[index],
+                              assetImagePath:
+                                  "assets/images/poses/${advanceYogaPoses[index]}.png",
+                              onTap: () => onSelectYoga(
+                                context,
+                                advanceYogaPoses[index],
+                              ),
+                            ),
+                          ),
                     ),
                   ),
                 ),

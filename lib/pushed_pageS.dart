@@ -55,7 +55,7 @@ class _PushedPageSState extends State<PushedPageS> {
         // onVideoButtonClick: () {},
         title: 'Squat Detection',
         query: 'How to do squats',
-        videoScreenTitle: 'Squat Suggested Videos',
+        videoScreenTitle: 'Squat',
       ),
       body: Stack(
         children: <Widget>[

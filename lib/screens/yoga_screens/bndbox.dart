@@ -3,7 +3,8 @@ import 'package:flutter/services.dart';
 import 'package:percent_indicator/linear_percent_indicator.dart';
 
 class BndBox extends StatefulWidget {
-  static const platform = const MethodChannel('ondeviceML');
+  static const platform = MethodChannel('ondeviceML');
+  static const modelName = "posenet_mv1_075_float_from_checkpoints";
 
   final List<dynamic> results;
   final int previewH;
@@ -100,6 +101,7 @@ class _BndBoxState extends State<BndBox> {
         }).toList();
 
         // print("Input Arr: " + _inputArr.toList().toString());
+        print("this is poeses array ${_inputArr.cast<double>().toList()}");
         _getPrediction(_inputArr.cast<double>().toList());
 
         _inputArr.clear();
@@ -148,11 +150,18 @@ class _BndBoxState extends State<BndBox> {
   }
 
   Future<void> _getPrediction(List<double> poses) async {
+    print("im called");
+    print("poses are $poses");
+    print("custom model is ${widget.customModel}");
+
     try {
       final double result = await BndBox.platform.invokeMethod('predictData', {
-        "model": widget.customModel,
+        "model": BndBox.modelName,
         "arg": poses,
       }); // passing arguments
+
+      print("Result is $result");
+
       if (result <= 1) {
         _percent = 0;
         _percent = result;
@@ -164,6 +173,7 @@ class _BndBoxState extends State<BndBox> {
       print("Final Label: " + result.toString());
     } on PlatformException catch (e) {
       // return e.message ;
+      print('hello error');
       print(e.message);
     }
   }

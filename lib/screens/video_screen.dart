@@ -16,7 +16,7 @@ class VideoScreen extends StatelessWidget {
     final bool isLoading = context.watch<VideoProvider>().isLoading;
     return Scaffold(
       appBar: AppBar(
-        title: Text(title),
+        title: Text("$title Suggested Videos"),
       ),
       body: GetBody(videos: videos, isLoading: isLoading),
     );
@@ -70,51 +70,53 @@ class VideoTile extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       margin: const EdgeInsets.symmetric(vertical: 10),
-      child: ListTile(
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(10),
-        ),
-        onTap: onTap,
-        contentPadding: const EdgeInsets.symmetric(
-          horizontal: 16,
-          vertical: 8,
-        ),
-        tileColor: AppColors.primaryColor.withOpacity(0.1),
-        dense: false,
-        isThreeLine: false,
-        minVerticalPadding: 16,
-        title: Text(
-          video.title ?? '',
-          style: const TextStyle(
-            color: AppColors.primaryColor,
-          ),
-          overflow: TextOverflow.ellipsis,
-        ),
-        subtitle: Text(video.author ?? ''),
-        leading: Container(
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(20),
-          ),
-          width: MediaQuery.of(context).size.width * 0.25,
-          child: ClipRRect(
+      child: Card(
+        elevation: 3,
+        child: ListTile(
+          shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(10),
-            child: Image.network(
-              video.thumbnail ?? defaultThumbnail,
-              fit: BoxFit.cover,
+          ),
+          onTap: onTap,
+          contentPadding: const EdgeInsets.symmetric(
+            horizontal: 14,
+            vertical: 8,
+          ),
+          dense: false,
+          isThreeLine: false,
+          minVerticalPadding: 16,
+          title: Text(
+            video.title ?? '',
+            style: const TextStyle(
+              color: AppColors.primaryColor,
+            ),
+            overflow: TextOverflow.ellipsis,
+          ),
+          subtitle: Text(video.author ?? ''),
+          leading: Container(
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(20),
+            ),
+            width: MediaQuery.of(context).size.width * 0.25,
+            child: ClipRRect(
+              borderRadius: BorderRadius.circular(10),
+              child: Image.network(
+                video.thumbnail ?? defaultThumbnail,
+                fit: BoxFit.cover,
+              ),
             ),
           ),
-        ),
-        trailing: Row(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            Text(video.duration ?? ''),
-            const SizedBox(width: 4),
-            const Icon(
-              Icons.watch_later,
-              size: 20,
-              color: AppColors.secondaryColor,
-            ),
-          ],
+          trailing: Row(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Text(video.duration ?? ''),
+              const SizedBox(width: 4),
+              const Icon(
+                Icons.watch_later,
+                size: 20,
+                color: AppColors.secondaryColor,
+              ),
+            ],
+          ),
         ),
       ),
     );

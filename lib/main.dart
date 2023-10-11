@@ -54,7 +54,7 @@ class MyApp extends StatelessWidget {
         debugShowCheckedModeBanner: false,
         home: AuthWrapper(cameras: cameras),
         //home: MainScreen(cameras),
-        theme: AppTheme(context).lightTheme,
+        theme: AppTheme().lightTheme,
         routes: {
           MainScreen.id: (context) => MainScreen(cameras),
           '/signIn': (context) => const SignInScreen(),

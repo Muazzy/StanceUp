@@ -54,7 +54,7 @@ class _PushedPageAState extends State<PushedPageA> {
         context,
         title: 'Arm Press Detection',
         query: 'How to do arm press',
-        videoScreenTitle: 'Arm press Suggested Videos',
+        videoScreenTitle: 'Arm Press',
       ),
       body: Stack(
         children: <Widget>[

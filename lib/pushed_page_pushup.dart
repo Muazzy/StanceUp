@@ -51,10 +51,9 @@ class _PushedPagePushupState extends State<PushedPagePushup> {
     return Scaffold(
       appBar: customAppBar(
         context,
-        // onVideoButtonClick: () {},
         title: 'Pushup Detection',
         query: 'How to do pushups',
-        videoScreenTitle: 'Pushup Suggested Videos',
+        videoScreenTitle: 'Pushup',
       ),
       body: SafeArea(
         child: Stack(

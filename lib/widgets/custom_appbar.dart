@@ -17,7 +17,6 @@ AppBar customAppBar(
       statusBarIconBrightness: Brightness.dark,
       statusBarBrightness: Brightness.dark,
     ),
-    centerTitle: false,
     title: Text(
       title,
       style: const TextStyle(color: Colors.black, fontSize: 16),
@@ -26,7 +25,6 @@ AppBar customAppBar(
     actions: [
       IconButton(
         onPressed: () {
-          // Future.delayed()
           context.read<VideoProvider>().search(query);
           Navigator.push(
             context,

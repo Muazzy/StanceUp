@@ -64,7 +64,9 @@ class MainActivity : FlutterActivity() {
     }
 
     private fun loadModelFile(modelName: String): MappedByteBuffer {
-        val fileDescriptor = assets.openFd(modelName)
+        val fileDescriptor = this.assets.openFd(modelName)
+        Log.d("LoadModelFile", "$fileDescriptor")
+
         val inputStream = FileInputStream(fileDescriptor.fileDescriptor)
         val fileChannel = inputStream.channel
         val startOffset = fileDescriptor.startOffset

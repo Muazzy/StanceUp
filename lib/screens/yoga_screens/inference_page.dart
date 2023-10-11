@@ -3,9 +3,8 @@ import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
 import 'package:fyp/screens/yoga_screens/bndbox.dart';
 import 'package:fyp/services/camera.dart';
+import 'package:fyp/widgets/custom_appbar.dart';
 import 'package:tflite/tflite.dart';
-// import 'package:yoga_guru/bndbox.dart';
-// import 'package:yoga_guru/camera.dart';
 
 class InferencePage extends StatefulWidget {
   final List<CameraDescription> cameras;
@@ -39,10 +38,11 @@ class _InferencePageState extends State<InferencePage> {
   Widget build(BuildContext context) {
     Size screen = MediaQuery.of(context).size;
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.black,
-        centerTitle: true,
-        title: Text(widget.title),
+      appBar: customAppBar(
+        context,
+        title: widget.customModel,
+        query: "How to do ${widget.customModel} pose",
+        videoScreenTitle: widget.customModel,
       ),
       body: Stack(
         children: <Widget>[
