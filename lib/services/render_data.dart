@@ -65,6 +65,7 @@ class _RenderDataState extends State<RenderData> {
   }
 
   bool _postureAccordingToExercise(Map<String, List<double>> poses) {
+    print("poses are: $poses");
     setState(() {
       shoulderLY = poses['leftShoulder']![1];
       shoulderRY = poses['rightShoulder']![1];
@@ -83,8 +84,6 @@ class _RenderDataState extends State<RenderData> {
       return poses['leftShoulder']![1] > 475 &&
           poses['rightShoulder']![1] > 475;
     }
-    // }
-    // return false;
   }
 
   _checkCorrectPosture(Map<String, List<double>> poses) {

@@ -1,3 +1,4 @@
+import 'package:flutter_svg/svg.dart';
 import 'package:fyp/constants/yoga_poses.dart';
 import 'package:fyp/main.dart';
 import 'package:flutter/material.dart';
@@ -19,157 +20,169 @@ class MainScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Size screen = MediaQuery.of(context).size;
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        SizedBox(height: 50),
-        Container(
-          padding: EdgeInsets.only(left: 16.0, right: 16.0),
-          child: RichText(
-            text: TextSpan(
-              text: 'StanceUp',
-              children: [
-                TextSpan(
-                  text: ' - your smart trainer',
+    return SafeArea(
+      child: Padding(
+        padding: const EdgeInsets.symmetric(vertical: 8.0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            // SizedBox(height: 50),
+            Padding(
+              padding: const EdgeInsets.only(left: 16.0, right: 16.0),
+              child: RichText(
+                text: const TextSpan(
+                  text: 'StanceUp',
+                  children: [
+                    TextSpan(
+                      text: ' - your smart trainer',
+                      style: TextStyle(
+                        color: Colors.grey,
+                        fontWeight: FontWeight.w400,
+                        fontSize: 12.0,
+                      ),
+                    )
+                  ],
                   style: TextStyle(
-                    color: Colors.grey,
-                    fontWeight: FontWeight.w400,
-                    fontSize: 12.0,
+                    color: AppColors.secondaryColor,
+                    fontWeight: FontWeight.bold,
+                    fontSize: 36.0,
                   ),
-                )
-              ],
-              style: TextStyle(
-                color: AppColors.secondaryColor,
-                fontWeight: FontWeight.bold,
-                fontSize: 36.0,
+                ),
               ),
             ),
-          ),
-        ),
-        Expanded(
-          // flex: 3,
-          child: SingleChildScrollView(
-            padding: EdgeInsets.symmetric(vertical: 10),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Container(
-                  padding: EdgeInsets.only(left: 16.0, right: 16.0),
-                  child: Text(
-                    'Strength Alignment',
-                    style: TextStyle(
-                      color: Colors.black,
-                      fontWeight: FontWeight.w600,
-                      fontSize: 20.0,
-                    ),
-                  ),
-                ),
-                SizedBox(
-                  height: 180,
-                  child: ListView(
-                    padding: EdgeInsets.symmetric(
-                      vertical: 8,
-                      horizontal: 16,
-                    ),
-                    scrollDirection: Axis.horizontal,
-                    children: [
-                      AlignmentCard(
-                        title: 'Arm press',
-                        assetImagePath: 'assets/images/arm-press.png',
-                        onTap: () =>
-                            onSelectA(context: context, modelName: 'posenet'),
-                      ),
-                      AlignmentCard(
-                        title: 'Squat',
-                        assetImagePath: 'assets/images/squat.png',
-                        onTap: () =>
-                            onSelectS(context: context, modelName: 'posenet'),
-                      ),
-                      AlignmentCard(
-                        title: 'Pushup',
-                        assetImagePath: 'assets/images/pushup.png',
-                        onTap: () => onSelectPushup(
-                            context: context, modelName: 'posenet'),
-                      ),
-                    ],
-                  ),
-                ),
-                const SizedBox(height: 15.0),
-                Container(
-                  padding: EdgeInsets.only(left: 16.0, right: 16.0),
-                  child: Text(
-                    'Yoga Alignment',
-                    style: TextStyle(
-                      color: Colors.black,
-                      fontWeight: FontWeight.w600,
-                      fontSize: 20.0,
-                    ),
-                  ),
-                ),
-                SizedBox(
-                  height: 150,
-                  child: ListView(
-                    padding: EdgeInsets.symmetric(
-                      vertical: 8,
-                      horizontal: 16,
-                    ),
-                    scrollDirection: Axis.horizontal,
-                    // children: [
-                    //   HorizontalAlignmentCard(
-                    //     title: 'Warrior Pose',
-                    //     assetImagePath: 'assets/images/warrior_pose.png',
-                    //     onTap: () =>
-                    //         onSelectY(context: context, modelName: 'posenet'),
-                    //   ),
-                    //   HorizontalAlignmentCard(
-                    //     title: beginnerYogaPoses[0],
-                    //     assetImagePath:
-                    //         "assets/images/poses/${beginnerYogaPoses[0]}.png",
-                    //     onTap: () =>
-                    //         onSelectYoga(context, beginnerYogaPoses[0]),
-                    //   ),
-                    // ],
-                    children: List.generate(
-                          beginnerYogaPoses.length,
-                          (index) => HorizontalAlignmentCard(
-                            title: beginnerYogaPoses[index],
-                            assetImagePath:
-                                "assets/images/poses/${beginnerYogaPoses[index]}.png",
-                            onTap: () =>
-                                onSelectYoga(context, beginnerYogaPoses[index]),
-                          ),
-                        ) +
-                        List.generate(
-                          intermediateYogaPoses.length,
-                          (index) => HorizontalAlignmentCard(
-                            title: intermediateYogaPoses[index],
-                            assetImagePath:
-                                "assets/images/poses/${intermediateYogaPoses[index]}.png",
-                            onTap: () => onSelectYoga(
-                              context,
-                              intermediateYogaPoses[index],
-                            ),
-                          ),
-                        ) +
-                        List.generate(
-                          advanceYogaPoses.length,
-                          (index) => HorizontalAlignmentCard(
-                            title: advanceYogaPoses[index],
-                            assetImagePath:
-                                "assets/images/poses/${advanceYogaPoses[index]}.png",
-                            onTap: () => onSelectYoga(
-                              context,
-                              advanceYogaPoses[index],
-                            ),
-                          ),
-                        ),
-                  ),
-                ),
-              ],
+            Padding(
+              padding: const EdgeInsets.symmetric(vertical: 16),
+              child: SizedBox(
+                height: MediaQuery.of(context).size.height * 0.25,
+                child: SvgPicture.asset('assets/images/hero.svg'),
+              ),
             ),
-          ),
+            Expanded(
+              // flex: 3,
+              child: SingleChildScrollView(
+                padding: EdgeInsets.symmetric(vertical: 10),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    const Padding(
+                      padding: EdgeInsets.only(left: 16.0, right: 16.0),
+                      child: Text(
+                        'Strength Alignment',
+                        style: TextStyle(
+                          color: Colors.black,
+                          fontWeight: FontWeight.w600,
+                          fontSize: 20.0,
+                        ),
+                      ),
+                    ),
+                    SizedBox(
+                      height: 180,
+                      child: ListView(
+                        padding: EdgeInsets.symmetric(
+                          vertical: 8,
+                          horizontal: 16,
+                        ),
+                        scrollDirection: Axis.horizontal,
+                        children: [
+                          AlignmentCard(
+                            title: 'Arm press',
+                            assetImagePath: 'assets/images/arm-press.png',
+                            onTap: () => onSelectA(
+                                context: context, modelName: 'posenet'),
+                          ),
+                          AlignmentCard(
+                            title: 'Squat',
+                            assetImagePath: 'assets/images/squat.png',
+                            onTap: () => onSelectS(
+                                context: context, modelName: 'posenet'),
+                          ),
+                          AlignmentCard(
+                            title: 'Pushup',
+                            assetImagePath: 'assets/images/pushup.png',
+                            onTap: () => onSelectPushup(
+                                context: context, modelName: 'posenet'),
+                          ),
+                        ],
+                      ),
+                    ),
+                    const SizedBox(height: 15.0),
+                    Container(
+                      padding: EdgeInsets.only(left: 16.0, right: 16.0),
+                      child: Text(
+                        'Yoga Alignment',
+                        style: TextStyle(
+                          color: Colors.black,
+                          fontWeight: FontWeight.w600,
+                          fontSize: 20.0,
+                        ),
+                      ),
+                    ),
+                    SizedBox(
+                      height: 150,
+                      child: ListView(
+                        padding: EdgeInsets.symmetric(
+                          vertical: 8,
+                          horizontal: 16,
+                        ),
+                        scrollDirection: Axis.horizontal,
+                        // children: [
+                        //   HorizontalAlignmentCard(
+                        //     title: 'Warrior Pose',
+                        //     assetImagePath: 'assets/images/warrior_pose.png',
+                        //     onTap: () =>
+                        //         onSelectY(context: context, modelName: 'posenet'),
+                        //   ),
+                        //   HorizontalAlignmentCard(
+                        //     title: beginnerYogaPoses[0],
+                        //     assetImagePath:
+                        //         "assets/images/poses/${beginnerYogaPoses[0]}.png",
+                        //     onTap: () =>
+                        //         onSelectYoga(context, beginnerYogaPoses[0]),
+                        //   ),
+                        // ],
+                        children: List.generate(
+                              beginnerYogaPoses.length,
+                              (index) => HorizontalAlignmentCard(
+                                title: beginnerYogaPoses[index],
+                                assetImagePath:
+                                    "assets/images/poses/${beginnerYogaPoses[index]}.png",
+                                onTap: () => onSelectYoga(
+                                    context, beginnerYogaPoses[index]),
+                              ),
+                            ) +
+                            List.generate(
+                              intermediateYogaPoses.length,
+                              (index) => HorizontalAlignmentCard(
+                                title: intermediateYogaPoses[index],
+                                assetImagePath:
+                                    "assets/images/poses/${intermediateYogaPoses[index]}.png",
+                                onTap: () => onSelectYoga(
+                                  context,
+                                  intermediateYogaPoses[index],
+                                ),
+                              ),
+                            ) +
+                            List.generate(
+                              advanceYogaPoses.length,
+                              (index) => HorizontalAlignmentCard(
+                                title: advanceYogaPoses[index],
+                                assetImagePath:
+                                    "assets/images/poses/${advanceYogaPoses[index]}.png",
+                                onTap: () => onSelectYoga(
+                                  context,
+                                  advanceYogaPoses[index],
+                                ),
+                              ),
+                            ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          ],
         ),
-      ],
+      ),
     );
     // );
   }

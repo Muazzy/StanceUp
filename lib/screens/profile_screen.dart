@@ -7,11 +7,13 @@ import '../services/auth_repository.dart';
 
 // import 'package:fyp/auth_repository.dart'; // Import your AuthRepository
 class ProfileScreen extends StatefulWidget {
+  const ProfileScreen({super.key});
+
   @override
-  _ProfileScreenState createState() => _ProfileScreenState();
+  ProfileScreenState createState() => ProfileScreenState();
 }
 
-class _ProfileScreenState extends State<ProfileScreen> {
+class ProfileScreenState extends State<ProfileScreen> {
   Map<String, dynamic> userInfo = {};
 
   @override
