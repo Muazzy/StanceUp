@@ -13,16 +13,17 @@ class InferencePage extends StatefulWidget {
   final String customModel;
 
   const InferencePage(
-      {required this.cameras,
+      {super.key,
+      required this.cameras,
       required this.title,
       required this.model,
       required this.customModel});
 
   @override
-  _InferencePageState createState() => _InferencePageState();
+  InferencePageState createState() => InferencePageState();
 }
 
-class _InferencePageState extends State<InferencePage> {
+class InferencePageState extends State<InferencePage> {
   List<dynamic> _recognitions = [];
   int _imageHeight = 0;
   int _imageWidth = 0;
@@ -51,7 +52,7 @@ class _InferencePageState extends State<InferencePage> {
             setRecognitions: _setRecognitions,
           ),
           BndBox(
-            results: _recognitions == null ? [] : _recognitions,
+            results: _recognitions,
             previewH: max(_imageHeight, _imageWidth),
             previewW: min(_imageHeight, _imageWidth),
             screenH: screen.height,

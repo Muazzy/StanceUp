@@ -88,13 +88,11 @@ class _BndBoxState extends State<BndBox> {
             top: y - 50,
             width: 100,
             height: 15,
-            child: Container(
-              child: Text(
-                "● ${k["part"]}",
-                style: TextStyle(
-                  color: Color.fromRGBO(37, 213, 253, 1.0),
-                  fontSize: 12.0,
-                ),
+            child: Text(
+              "● ${k["part"]}",
+              style: TextStyle(
+                color: Color.fromRGBO(37, 213, 253, 1.0),
+                fontSize: 12.0,
               ),
             ),
           );
